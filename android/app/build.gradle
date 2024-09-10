@@ -1,0 +1,47 @@
+plugins {
+    id "com.android.application"
+    id "com.google.gms.google-services"  // Keep this for FlutterFire Configuration
+    id "kotlin-android"  // Ensure Kotlin plugin is applied
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.businessinfoapp"
+    compileSdk = 34  // Set a specific compileSdk version
+    ndkVersion = "21.3.6528147"  // Ensure the NDK version is specified
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId = "com.example.businessinfoapp"
+        minSdkVersion 23
+        targetSdkVersion 33  // Set a specific targetSdk version
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.0"  // Ensure Kotlin version is set to 1.8.0
+    // Add other dependencies here if necessary
+}

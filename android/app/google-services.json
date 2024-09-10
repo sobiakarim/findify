@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "593702848172",
+    "project_id": "findify-b8687",
+    "storage_bucket": "findify-b8687.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593702848172:android:da110104ec3c35e061c109",
+        "android_client_info": {
+          "package_name": "com.example.businessinfoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvdlSH0wrnGBaflA2OQXTvCqLiN1nRsLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

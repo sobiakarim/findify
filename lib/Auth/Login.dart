@@ -1,8 +1,8 @@
-import 'package:businessinfoapp/Screens/ForgotPassword.dart';
-import 'package:businessinfoapp/Screens/SignUp.dart';
+import 'package:businessinfoapp/Auth/ForgotPassword.dart';
+import 'package:businessinfoapp/Auth/SignUp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import '../Business/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -46,12 +46,10 @@ class _LoginState extends State<Login> with TickerProviderStateMixin{
 
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Color(0xff1C0D0D),
       body:
       Center(
         child: Column(
@@ -79,9 +77,15 @@ class _LoginState extends State<Login> with TickerProviderStateMixin{
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: 40,),
-                        TextFormField(
+                        Material(
+                          color:  Color(0xff2E1E1E),
+                          borderRadius: BorderRadius.circular(20),
+                          elevation: 12,
+                          shadowColor:  Color(0xffD2AA89),
+                          child: TextFormField(
                           controller: emailController,
-                          cursorColor: Colors.white,
+                            style: TextStyle(color: Color(0xffD2B48C)),
+                          cursorColor: Color(0xffD2AA89),
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -90,47 +94,57 @@ class _LoginState extends State<Login> with TickerProviderStateMixin{
                             return null;
                           },
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.alternate_email_outlined, color: Color(0xffD3B08F)),
+                            prefixIcon: Icon(Icons.alternate_email_outlined, color: Color(0xffD2B48C)),
                             hintText: "Email",
                             hintStyle: TextStyle(
-                              color: Color(0xffD3B08F)
+                              color: Color(0xffC19A6B)
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: Color(0xffD3B08F)),
+                              borderSide: BorderSide(color: Color(0xff2E1E1E)),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: Color(0xffD3B08F))
+                              borderSide: BorderSide(color: Color(0xff2E1E1E))
+                            ),
+                          ),
+                                                    ),
+                        ),
+                        SizedBox(height: 30),
+                        Material(
+                          color:  Color(0xff2E1E1E),
+                          borderRadius: BorderRadius.circular(20),
+                          elevation: 12,
+                          shadowColor:  Color(0xffD2AA89),
+                          child: TextFormField(
+                            obscureText: true,
+                            style: TextStyle(color: Color(0xffD2B48C)),
+                            controller: passwordController,
+                            cursorColor: Color(0xffD2AA89),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Enter Password";
+                              }
+                              return null;
+                            },
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.key_rounded,color: Color(0xffD2B48C)),
+                              hintText: "Password",
+                              hintStyle: TextStyle(
+                                  color: Color(0xffC19A6B)
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(color: Color(0xff2E1E1E)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(color: Color(0xff2E1E1E)),
+                              ),
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          controller: passwordController,
-                          cursorColor: Colors.white,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Enter Password";
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.key_rounded,color: Color(0xffD3B08F)),
-                            hintText: "Password",
-                            hintStyle: TextStyle(
-                                color: Color(0xffD3B08F)
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: Color(0xffD3B08F)),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: Color(0xffD3B08F)),
-                            ),
-                          ),
-                        ),
+
                         Align(
                           alignment: Alignment.bottomRight,
                           child: TextButton(
@@ -142,43 +156,51 @@ class _LoginState extends State<Login> with TickerProviderStateMixin{
                             },
                             child: Text(
                               "Forgot Password?",
-                              style: TextStyle(color: Color(0xffD3B08F)),
+                              style: TextStyle(color: Color(0xffD2B48C)),
                             ),
                           ),
                         ),
+                         SizedBox(height: 10,),
                          Container(
                             width: 200.0,
-                            child: TextButton(
-                              onPressed: () async {
-                                if (formKey.currentState!.validate()) {
-                                  try {
-                                    // Sign in user with email and password
-                                    await auth.signInWithEmailAndPassword(
-                                      email: emailController.text.trim(),
-                                      password: passwordController.text.trim(),
-                                    );
+                            height: 50,
+                            child: Material(
+                              color:  Color(0xffD2B48C),
+                              borderRadius: BorderRadius.circular(26),
+                              elevation: 12,
+                              shadowColor:  Color(0xffD2AA89),
+                              child: TextButton(
+                                onPressed: () async {
+                                  if (formKey.currentState!.validate()) {
+                                    try {
+                                      // Sign in user with email and password
+                                      await auth.signInWithEmailAndPassword(
+                                        email: emailController.text.trim(),
+                                        password: passwordController.text.trim(),
+                                      );
 
-                                    // Navigate to home screen if login is successful
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                                 );
-                                  } catch (e) {
-                                    // Show error message if login fails
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text('Error: ${e.toString()}'),
-                                      ),
-                                    );
+                                      // Navigate to home screen if login is successful
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                                   );
+                                    } catch (e) {
+                                      // Show error message if login fails
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text('Error: ${e.toString()}'),
+                                        ),
+                                      );
+                                    }
                                   }
-                                }
-                              },
-                              style: TextButton.styleFrom(
-                                side: BorderSide(
-                                  color: Color(0xffD3B08F),
+                                },
+                                style: TextButton.styleFrom(
+                                  side: BorderSide(
+                                    color: Color(0xff3E2723),
+                                  ),
                                 ),
+                                child: Text("Log in", style: TextStyle(color: Color(0xff3E2723))),
                               ),
-                              child: Text("Log in", style: TextStyle(color: Color(0xffD3B08F))),
                             ),
                           ),
                         TextButton(
@@ -190,7 +212,7 @@ class _LoginState extends State<Login> with TickerProviderStateMixin{
                           },
                           child: Text(
                             "Don't have an account?",
-                            style: TextStyle(color: Color(0xffD3B08F)),
+                            style: TextStyle(color: Color(0xffD2B48C)),
                           ),
                         ),
                       ],

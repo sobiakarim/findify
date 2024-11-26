@@ -127,11 +127,11 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Color(0xff1C0D0D),
       appBar: AppBar(
-        title: const Text('User Profile', style: TextStyle(color: Color(0xffD3B08F)),),
-        backgroundColor: Colors.brown[700],
-        iconTheme: IconThemeData(color: Color(0xffD3B08F)),
+        title: const Text('User Profile', style: TextStyle(color: Color(0xffD2B48C), fontWeight: FontWeight.bold,),),
+        backgroundColor: Color(0xff1C0D0D),
+        iconTheme: IconThemeData(color: Color(0xffD2B48C)),
       ),
       body: isLoading // Show loading indicator if loading is true
           ? const Center(child: CircularProgressIndicator())
@@ -154,20 +154,22 @@ class _UserProfileState extends State<UserProfile> {
                       : null,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               _buildTextField(nameController, 'Name', Icons.person, enabled: isEditMode),
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               _buildTextField(cityController, 'City', Icons.location_city, enabled: isEditMode),
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               _buildTextField(addressController, 'Address', Icons.maps_home_work_outlined, enabled: isEditMode),
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               isEditMode
                   ? ElevatedButton(
                 onPressed: _updateUserData, // Update user data on button press
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown[700],
+                  elevation: 12,
+                  shadowColor: Color(0xffD2AA89),
+                  backgroundColor: Color(0xffD2B48C),
                 ),
-                child: const Text('Save Changes', style: TextStyle(color: Color(0xffD3B08F)),),
+                child: const Text('Save Changes', style: TextStyle(color: Color(0xff3E2723)),),
               )
                   : ElevatedButton(
                 onPressed: () {
@@ -176,9 +178,11 @@ class _UserProfileState extends State<UserProfile> {
                   });
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.brown[700],
+                  elevation: 12,
+                  shadowColor: Color(0xffD2AA89),
+                  backgroundColor: Color(0xffD2B48C),
                 ),
-                child: const Text('Make Changes', style: TextStyle(color: Color(0xffD3B08F)),),
+                child: const Text('Make Changes', style: TextStyle(color: Color(0xff3E2723)),),
               ),
             ],
           ),
@@ -189,23 +193,29 @@ class _UserProfileState extends State<UserProfile> {
 
   // Helper function to build text fields with specific properties
   Widget _buildTextField(TextEditingController controller, String hintText, IconData icon, {bool enabled = true}) {
-    return TextFormField(
-      controller: controller,
-      cursorColor: Colors.white,
-      enabled: enabled, // Control whether the text field is enabled or not
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: Color(0xffD3B08F) ,),
-        hintText: hintText,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: const BorderSide(color: Color(0xffD3B08F)),
+    return Material(
+      color:  Color(0xff2E1E1E),
+      borderRadius: BorderRadius.circular(20),
+      elevation: 12,
+      shadowColor:  Color(0xffD2AA89),
+      child: TextFormField(
+        controller: controller,
+        cursorColor:  Color(0xffD2B48C),
+        enabled: enabled, // Control whether the text field is enabled or not
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon, color:  Color(0xffD2B48C) ,),
+          hintText: hintText,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: const BorderSide(color:  Color(0xff2E1E1E)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: const BorderSide(color:  Color(0xff2E1E1E)),
+          ),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: const BorderSide(color: Color(0xffD3B08F)),
-        ),
+        style: TextStyle(color: Color(0xffD2B48C)),
       ),
-      style: TextStyle(color: Colors.black),
     );
   }
 }

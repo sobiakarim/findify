@@ -1,4 +1,4 @@
-import 'package:businessinfoapp/Class/splashServices.dart';
+import 'package:businessinfoapp/Main/splashServices.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown,
+      backgroundColor: Color(0xff1C0D0D),
       body: Center(
         child: TweenAnimationBuilder(
           tween: Tween(begin: 0.0, end: 200.0),
@@ -32,10 +32,10 @@ class _SplashScreenState extends State<SplashScreen> {
               height: size,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.brown,
+                color: Color(0xff2E1E1E),
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xffD3B08F),
+                    color: Color(0xffD2AA89),
                     blurRadius: size/2,
                     spreadRadius: size/4,
 

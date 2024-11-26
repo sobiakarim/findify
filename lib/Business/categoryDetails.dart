@@ -11,10 +11,12 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(category, style: TextStyle(color: Color(0xffD3B08F)),),
-        backgroundColor: Colors.brown[700],
-        iconTheme: IconThemeData(color: Color(0xffD3B08F)) ),
-      backgroundColor: Colors.brown[50],
+
+        title: Text(category, style: TextStyle(color: Color(0xffD2B48C), fontWeight: FontWeight.w500),),
+        backgroundColor: Color(0xff1C0D0D),
+        iconTheme: IconThemeData(color: Color(0xffD2B48C))
+      ),
+      backgroundColor: Color(0xff1C0D0D),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection(category).snapshots(),
         builder: (context, snapshot) {
@@ -32,7 +34,9 @@ class CategoryScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               var business = snapshot.data!.docs[index].data() as Map<String, dynamic>;
               return Card(
-                color: Color(0xffD3B08F),
+                elevation: 20,
+                shadowColor: Color(0xffD2B48C),
+                color: Color(0xffD2B48C),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 child: ListTile(
                   title: Text(
@@ -41,9 +45,9 @@ class CategoryScreen extends StatelessWidget {
                   ),
                   subtitle: Text(
                     business['description'] ?? '',
-                    style: TextStyle(color: Colors.brown[600]),
+                    style: TextStyle(color: Color(0xff3E2723)),
                   ),
-                  trailing: Icon(Icons.arrow_forward_ios, color: Colors.brown[700]),
+                  trailing: Icon(Icons.arrow_forward_ios, color: Color(0xff3E2723)),
                   onTap: () {
                     Navigator.push(
                       context,

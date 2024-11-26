@@ -9,25 +9,18 @@ class BusinessDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(business['name'] ?? 'Business Details', style: TextStyle(color: Color(0xffD3B08F)),),
-        backgroundColor: Colors.brown[700],
-        iconTheme: IconThemeData(color: Color(0xffD3B08F)),
+        title: Text(business['name'] ?? 'Business Details', style: TextStyle(color: Color(0xffD2B48C), fontWeight: FontWeight.w500),),
+        backgroundColor: Color(0xff1C0D0D),
+        iconTheme: IconThemeData(color: Color(0xffD2B48C)),
       ),
-      backgroundColor: Colors.brown[50],
+      backgroundColor: Color(0xff1C0D0D),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              business['name'] ?? 'Business Name',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.brown[700],
-              ),
-            ),
-            SizedBox(height: 16),
+
+            SizedBox(height: 36),
             InfoTile(
               label: 'Address',
               value: business['address'] ?? 'N/A',
@@ -58,9 +51,10 @@ class InfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color(0xffD3B08F),
+      elevation: 20,
+      shadowColor: Color(0xffD2B48C),
+      color: Color(0xffD2B48C),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 4,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Row(
@@ -70,14 +64,14 @@ class InfoTile extends StatelessWidget {
                 '$label:',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.brown[700],
+                  color: Color(0xff3E2723),
                 ),
               ),
             ),
             Expanded(
               child: Text(
                 value,
-                style: TextStyle(color: Colors.brown[800]),
+                style: TextStyle(color: Color(0xff3E2723)),
               ),
             ),
           ],
